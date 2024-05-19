@@ -1,6 +1,8 @@
 <script setup>
 const isVisibleAuth = ref(false);
 
+const emit = defineEmits();
+
 const links = [
   [
     {
@@ -47,7 +49,7 @@ const links = [
     },
     {
       icon: "i-heroicons-user-circle",
-      click: () => (isVisibleAuth.value = true),
+      click: () => emit("reg"),
     },
     {
       label: "theme",
@@ -67,10 +69,19 @@ const links = [
       <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
         <template #header>
           <div class="flex items-center justify-between">
-            <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">Modal</h3>
+            <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white"></h3>
             <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="isVisibleAuth = false" />
           </div>
         </template>
+        <UForm>
+          <UFormGroup>
+            <p class="text-sm">Имя</p>
+            <UInput class="mb-3" placeholder="Иван" icon="i-heroicons-user" />
+            <p class="text-sm">Телефон</p>
+            <UInput class="mb-3" placeholder="8 (800) 250-41-43" icon="i-heroicons-phone" />
+            <UButton label="Отправить" />
+          </UFormGroup>
+        </UForm>
       </UCard>
     </UModal>
   </div>

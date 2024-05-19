@@ -206,17 +206,28 @@
           <p>Зарегистрируйтесь на нашем сайте</p>
         </div>
         <div class="step">
-          <div class="step_circle text-3xl">1</div>
+          <div class="step_circle text-3xl">2</div>
           <p>Менеджер покажет решение Вашей задачи</p>
         </div>
         <div class="step">
-          <div class="step_circle text-3xl">1</div>
+          <div class="step_circle text-3xl">3</div>
           <p>Вам не придётся больше думать об этой задаче</p>
         </div>
       </div>
       <div style="display: flex; justify-content: center">
         <UButton size="xl" style="width: fit-content" @click="$emit('reg')" label="Начать экономить" />
       </div>
+    </ULandingSection>
+
+    <ULandingSection title="Клиенты о нашем сервисе">
+      <UCarousel class="px-20" arrows v-slot="{ item }" :items="reviews">
+        <div class="review_card p-3 mr-7">
+          <UAvatar :alt="item.name" size="3xl" />
+          <p class="text-purple-400 text-2xl">{{ item.name }}</p>
+          <p class="text-slate-400">{{ item.job }}</p>
+          <p class="review_card-text mt-3">{{ item.text }}</p>
+        </div>
+      </UCarousel>
     </ULandingSection>
   </div>
 </template>
@@ -273,9 +284,49 @@ const problems = [
     content: "Сервис Zig-Zag позволяет настроить прозрачный оценки эффективности курьеров. Возможно настроить автоматический расчет заработной платы.",
   },
 ];
+
+const reviews = [
+  {
+    name: "Иван Загребин",
+    job: "ведущий логист",
+    text: "Ежедневно Zig-Zag помогает моей команде качественно выполнять задачи логистики. Привыкли к системе быстро, сегодня в ней работают 4 человека, каждый со своим уровнем доступа и возможностями. Желаю Zig-Zag только успехов!",
+  },
+  {
+    name: "Олег Меньшиков",
+    job: "руководитель",
+    text: "Ребята из команды Zig-Zag доказали, что логистику можно и НУЖНО оптимизировать! Раньше на планирование маршрутов тратил по 3-4 часа ежедневно, а теперь всего 20 минут. Ну и длина маршрутов сократилась ощутимо – с математикой не поспоришь.",
+  },
+  {
+    name: "Ольга Костина",
+    job: "коммерческий директор",
+    text: "Сама я с системой не работаю, вижу только выгруженные из неё отчеты и финансовую статистику в конце месяца. Отметить хочу то, что при сохранении объёмов доставок, затраты на бензин снизились примерно на 15%.",
+  },
+  {
+    name: "Валерий Исаев",
+    job: "водитель",
+    text: "Первое время всем было непривычно работать с мобильным приложением, но мы быстро поняли, что Zig-Zag на нашей стороне, ведь наша зарплата напрямую зависит от количества посещенных клиентов. Все данные передаются на сервер, количество обработанных заказов суммируется и формируется в отчет по зарплате. Проще некуда.",
+  },
+  {
+    name: "Станислав Сорокин",
+    job: "логист",
+    text: "В системе разобрался и работаю самостоятельно, с первого дня. Искал программу для решения собственных рабочих задач, самостоятельно разобрался, работаю по сей день. Бывают моменты, когда чего-то не понимаю, звоню в компанию, дружелюбно помогают решить вопрос. Сейчас рассматриваем вопрос о доработке некоторых элементов системы под конкретно наши нужды.",
+  },
+];
 </script>
 
 <style lang="scss" scoped>
+.review_card {
+  border: 2px solid #c084fc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-text {
+    max-width: 300px;
+  }
+}
+
 .opportunities {
   :deep(.truncate) {
     white-space: unset;
@@ -380,7 +431,7 @@ const problems = [
     position: absolute;
     width: 100%;
     top: 50px;
-    background: #4ade80;
+    background: #c084fc;
     height: 4px;
   }
 
@@ -397,7 +448,7 @@ const problems = [
       width: 100px;
       aspect-ratio: 1/1;
       border-radius: 50%;
-      background: #4ade80;
+      background: #c084fc;
       position: relative;
     }
   }

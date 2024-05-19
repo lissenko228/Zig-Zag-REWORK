@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
+      link: [{ rel: "icon", type: "image/x-icon", href: "/logo.svg" }],
       title: "Программа для оптимизации транспортной логистики: управление, автоматизация, сокращение расходов | «Zig-Zag»",
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
@@ -11,8 +12,8 @@ export default defineNuxtConfig({
     disableGlobalStyles: true,
   },
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@nuxtjs/color-mode"],
-  extends: ['@nuxt/ui-pro'],
+  modules: ["@nuxt/ui", "@nuxtjs/color-mode", "@nuxt/image"],
+  extends: ["@nuxt/ui-pro"],
   colorMode: {
     preference: "light",
   },
